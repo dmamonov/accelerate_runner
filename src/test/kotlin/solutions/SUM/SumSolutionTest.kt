@@ -10,6 +10,6 @@ class SumSolutionTest {
         println("Hello");
         Assertions.assertEquals(2, SumSolution.sum(1, 1))
         Assertions.assertEquals(0, SumSolution.sum(-1, 1))
-        Assertions.assertEquals(0, SumSolution.sum(7, 11))
+        Assertions.assertEquals(18, SumSolution.sum(7, 11))
     }
 }
