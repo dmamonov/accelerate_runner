@@ -36,6 +36,7 @@ tasks.named<JavaExec>("run") {
 }
 
 tasks.test {
+    outputs.upToDateWhen { false } 
     useJUnitPlatform()
     systemProperty("cucumber.junit-platform.naming-strategy", "long")
     testLogging {
