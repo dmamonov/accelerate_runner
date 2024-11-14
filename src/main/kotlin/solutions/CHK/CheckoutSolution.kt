@@ -34,6 +34,26 @@ object CheckoutSolution {
 | D    | 15    |                        |
 | E    | 40    | 2E get one B free      |
 | F    | 10    | 2F get one F free      |
+| G    | 20    |                        |
+| H    | 10    | 5H for 45, 10H for 80  |
+| I    | 35    |                        |
+| J    | 60    |                        |
+| K    | 80    | 2K for 150             |
+| L    | 90    |                        |
+| M    | 15    |                        |
+| N    | 40    | 3N get one M free      |
+| O    | 10    |                        |
+| P    | 50    | 5P for 200             |
+| Q    | 30    | 3Q for 80              |
+| R    | 50    | 3R get one Q free      |
+| S    | 30    |                        |
+| T    | 20    |                        |
+| U    | 40    | 3U get one U free      |
+| V    | 50    | 2V for 90, 3V for 130  |
+| W    | 20    |                        |
+| X    | 90    |                        |
+| Y    | 10    |                        |
+| Z    | 50    |                        |
 +------+-------+------------------------+
         */
 
@@ -44,6 +64,26 @@ object CheckoutSolution {
             'D' to UnitPrice(15, listOf(), null),
             'E' to UnitPrice(40, listOf(), FreeOffer(2, 'B')),
             'F' to UnitPrice(10, listOf(), FreeOffer(2, 'F')),
+            'G' to UnitPrice(20, listOf(), null),
+            'H' to UnitPrice(10, listOf(PackOffer(10, 80), PackOffer(5, 45)), null),
+            'I' to UnitPrice(35, listOf(), null),
+            'J' to UnitPrice(60, listOf(), null),
+            'K' to UnitPrice(80, listOf(PackOffer(2,150)), null),
+            'L' to UnitPrice(90, listOf(), null),
+            'M' to UnitPrice(15, listOf(), null),
+            'N' to UnitPrice(40, listOf(), FreeOffer(3, 'M')),
+            'O' to UnitPrice(10, listOf(), null),
+            'P' to UnitPrice(50, listOf(PackOffer(5,200)), null),
+            'Q' to UnitPrice(30, listOf(PackOffer(3,80)), null),
+            'R' to UnitPrice(50, listOf(), FreeOffer(3, 'Q')),
+            'S' to UnitPrice(30, listOf(), null),
+            'T' to UnitPrice(20, listOf(), null),
+            'U' to UnitPrice(40, listOf(), FreeOffer(3,'U')),
+            'V' to UnitPrice(50, listOf(PackOffer(3, 130), PackOffer(2, 90)), null),
+            'W' to UnitPrice(20, listOf(), null),
+            'X' to UnitPrice(90, listOf(), null),
+            'Y' to UnitPrice(10, listOf(), null),
+            'Z' to UnitPrice(50, listOf(), null),
         );
 
         val checkout:MutableMap<Char, Int> = prices.keys.associateWith { 0 }.toMutableMap();
