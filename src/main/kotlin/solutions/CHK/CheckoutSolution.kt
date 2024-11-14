@@ -25,7 +25,6 @@ data class UnitPrice (
 object CheckoutSolution {
     fun checkout(skus: String): Int {
         /*
-Our price table and offers: 
 +------+-------+------------------------+
 | Item | Price | Special offers         |
 +------+-------+------------------------+
@@ -34,6 +33,7 @@ Our price table and offers:
 | C    | 20    |                        |
 | D    | 15    |                        |
 | E    | 40    | 2E get one B free      |
+| F    | 10    | 2F get one F free      |
 +------+-------+------------------------+
         */
 
@@ -43,6 +43,7 @@ Our price table and offers:
             'C' to UnitPrice(20, listOf(), null),
             'D' to UnitPrice(15, listOf(), null),
             'E' to UnitPrice(40, listOf(), FreeOffer(2, 'B')),
+            'F' to UnitPrice(10, listOf(), FreeOffer(2, 'F')),
         );
 
         val checkout:MutableMap<Char, Int> = prices.keys.associateWith { 0 }.toMutableMap();
@@ -62,8 +63,13 @@ Our price table and offers:
             val price = prices[unitCode]!!;
             if (price.freeOffer!=null) {
                 val offer = price.freeOffer;
-                val unitsFree = unitCount / offer.requireSize; //TODO check balance.
-                checkout[offer.freeUnitCode] = maxOf(0, checkout[offer.freeUnitCode]!!-unitsFree);
+                if (unitCode==offer.freeUnitCode) {
+                    val unitsFree = unitCount / (offer.requireSize+1);
+                    checkout[offer.freeUnitCode] = unitCount-unitsFree;
+                } else {
+                    val unitsFree = unitCount / offer.requireSize;
+                    checkout[offer.freeUnitCode] = maxOf(0, checkout[offer.freeUnitCode]!!-unitsFree);
+                } 
             }
         }
 
